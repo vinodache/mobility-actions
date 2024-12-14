@@ -1,0 +1,38 @@
+{
+  "name": "mobility-actions",
+  "version": "1.0.0",
+  "description": "Repo for react native actions for build and upload to stores",
+  "main": "index.js",
+  "scripts": {
+    "build-action-build-ios": "ncc build src/build-ios/main.ts -m -o lib/build-ios",
+    "build-action-upload-android": "ncc build src/upload-android/main.ts -m -o lib/upload-android",
+    "build-action-upload-ios": "ncc build src/upload-ios/main.ts -m -o lib/upload-ios",
+    "compile": "npm-run-all --parallel build-action-build-ios build-action-upload-android build-action-upload-ios",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^6.0.0",
+    "@googleapis/androidpublisher": "^12.1.0",
+    "fast-glob": "^3.3.2",
+    "jszip": "^3.10.1",
+    "p-timeout": "^6.1.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "4.1.5",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vercel/ncc": "^0.38.1",
+    "eslint": "^8.56.0",
+    "github-action-ts-run-api": "^3.0.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  }
+}
