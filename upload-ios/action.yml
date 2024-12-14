@@ -22,4 +22,4 @@ outputs:
     description: 'XML output from altool'
 runs:
   using: 'node20'
-  main: 'lib/upload-ios/index.js'
+  main: '../lib/upload-ios/index.js'
