@@ -120,4 +120,4 @@ inputs:
     default: "ios-build.keychain"
 runs:
   using: "node20"
-  main: "lib/build-ios/index.js"
+  main: "../lib/build-ios/index.js"
