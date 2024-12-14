@@ -68,7 +68,7 @@ async function run() {
     process.env.CUSTOM_KEYCHAIN_NAME = core.getInput('custom-keychain-name');
 
     // Execute build.sh
-    await exec.exec(`bash ${__dirname}/../build.sh`);
+    await exec.exec(`bash ${__dirname}/../../src/build-ios/build.sh`);
   } catch (error: unknown) {
     if (error instanceof Error) {
         core.setFailed(error.message)
