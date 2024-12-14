@@ -55,4 +55,4 @@ outputs:
     description: "The internal app sharing download url if track was 'internalsharing'"
 runs:
   using: 'node20'
-  main: 'lib/upload-android/index.js'
+  main: '../lib/upload-android/index.js'
