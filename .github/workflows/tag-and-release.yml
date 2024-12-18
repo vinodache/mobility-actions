@@ -2,11 +2,11 @@ name: Tag and Release
 
 on:
   workflow_dispatch:
-		inputs:
+   inputs:
     tag-number:
-      description: 'tag-number'
-		  required: true
-		  type: string
+      type: string
+      description: "Provide the tag number"
+      required: true
 
 jobs:
   tag:
