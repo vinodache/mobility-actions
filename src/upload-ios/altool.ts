@@ -1,8 +1,8 @@
-import * as path from 'path'
-import * as io from '@actions/io'
-import * as fs from 'fs'
-import * as exec from '@actions/exec'
-import {ExecOptions} from '@actions/exec/lib/interfaces'
+import * as path from "path";
+import * as io from "@actions/io";
+import * as fs from "fs";
+import * as exec from "@actions/exec";
+import { ExecOptions } from "@actions/exec/lib/interfaces";
 
 /**
  Upload the specified application.
@@ -17,45 +17,45 @@ export async function uploadApp(
   appType: string,
   apiKeyId: string,
   issuerId: string,
-  options?: ExecOptions
+  options?: ExecOptions,
 ): Promise<void> {
   const args: string[] = [
-    'altool',
-    '--output-format',
-    'xml',
-    '--upload-app',
-    '--file',
+    "altool",
+    "--output-format",
+    "xml",
+    "--upload-app",
+    "--file",
     appPath,
-    '--type',
+    "--type",
     appType,
-    '--apiKey',
+    "--apiKey",
     apiKeyId,
-    '--apiIssuer',
-    issuerId
-  ]
+    "--apiIssuer",
+    issuerId,
+  ];
 
-  await exec.exec('xcrun', args, options)
+  await exec.exec("xcrun", args, options);
 }
 
 function privateKeysPath(): string {
-  const home: string = process.env['HOME'] || ''
-  if (home === '') {
-    throw new Error('Unable to determine user HOME path')
+  const home: string = process.env["HOME"] || "";
+  if (home === "") {
+    throw new Error("Unable to determine user HOME path");
   }
-  return path.join(home, 'private_keys')
+  return path.join(home, "private_keys");
 }
 
 export async function installPrivateKey(
   apiKeyId: string,
-  apiPrivateKey: string
+  apiPrivateKey: string,
 ): Promise<void> {
-  await io.mkdirP(privateKeysPath())
+  await io.mkdirP(privateKeysPath());
   fs.writeFileSync(
     path.join(privateKeysPath(), `AuthKey_${apiKeyId}.p8`),
-    apiPrivateKey
-  )
+    apiPrivateKey,
+  );
 }
 
 export async function deleteAllPrivateKeys(): Promise<void> {
-  await io.rmRF(privateKeysPath())
+  await io.rmRF(privateKeysPath());
 }
